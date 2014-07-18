@@ -96,6 +96,33 @@ return array(
                 'callback' => 'HumusAmqpDemoModule\Demo\EchoCallback'
             ),
         ),
+        'multiple_consumers' => array(
+            'multiple-consumer' => array(
+                'connection' => 'default',
+                'exchange_options' => array(
+                    'name' => 'topic-exchange',
+                    'type' => 'topic'
+                ),
+                'queues' => array(
+                    array(
+                        'name' => 'multi-1',
+                        'callback' => 'HumusAmqpDemoModule\Demo\EchoErrorCallback',
+                        'routingKeys' => array(
+                            '#.error',
+                            '#.warn'
+                        )
+                    ),
+                    array(
+                        'name' => 'multi-2',
+                        'callback' => 'HumusAmqpDemoModule\Demo\EchoCallback',
+                        'routingKeys' => array(
+                            '#.info',
+                            '#.debug'
+                        )
+                    )
+                )
+            )
+        ),
         'rpc_servers' => array(
             'demo-rpc-server' => array(
                 'connection' => 'default',
@@ -120,6 +147,7 @@ return array(
     'service_manager' => array(
         'invokables' => array(
             'HumusAmqpDemoModule\Demo\EchoCallback' => 'HumusAmqpDemoModule\Demo\EchoCallback',
+            'HumusAmqpDemoModule\Demo\EchoErrorCallback' => 'HumusAmqpDemoModule\Demo\EchoErrorCallback',
             'HumusAmqpDemoModule\Demo\PowerOfTwoCallback' => 'HumusAmqpDemoModule\Demo\PowerOfTwoCallback',
             'HumusAmqpDemoModule\Demo\RandomIntCallback' => 'HumusAmqpDemoModule\Demo\RandomIntCallback'
         )

@@ -48,3 +48,16 @@ Send 1000000 messages to topic exchange with random error-level as routing key
 Consume 100 messages from topic exchange by routing key error (0)
 
     php public/index.php amqpdemo topic-producer 100
+
+Start the multiple consumer
+
+    php public/index.php amqp multiple-consumer multiple-consumer
+
+Send messages to multiple consumer
+
+    php public/index.php amqp stdin-producer topic-producer --route=level.error error
+    php public/index.php amqp stdin-producer topic-producer --route=level.warn warn
+    php public/index.php amqp stdin-producer topic-producer --route=level.test test
+    php public/index.php amqp stdin-producer topic-producer --route=level.test2 test2
+    php public/index.php amqp stdin-producer topic-producer --route=level.info info
+    php public/index.php amqp stdin-producer topic-producer --route=level.debug debug
