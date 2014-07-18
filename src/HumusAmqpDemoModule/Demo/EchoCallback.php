@@ -1,6 +1,6 @@
 <?php
 
-namespace HumusAmqpModule\Demo;
+namespace HumusAmqpDemoModule\Demo;
 
 use HumusAmqpModule\Amqp\ConsumerInterface;
 use PhpAmqpLib\Message\AMQPMessage;

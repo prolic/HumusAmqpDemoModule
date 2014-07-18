@@ -56,7 +56,7 @@ return array(
     ),
     'service_manager' => array(
         'invokables' => array(
-            'HumusAmqpModule\Demo\EchoCallback' => 'HumusAmqpModule\Demo\EchoCallback'
+            'HumusAmqpDemoModule\Demo\EchoCallback' => 'HumusAmqpDemoModule\Demo\EchoCallback'
         )
     )
 );

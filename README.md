@@ -33,6 +33,10 @@ Start the demo consumer
 
     php public/index.php amqp consumer demo-consumer
 
-Start the demo producer
+Send a message from StdIn to exchange
 
-    php public/index.php amqp producer demo-producer
+    echo "my test message" | xargs -0 php public/index.php amqp stdin-producer demo-producer
+
+Send a message from parameter to exchange
+
+    php public/index.php amqp stdin-producer demo-producer "my test message"
