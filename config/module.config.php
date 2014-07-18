@@ -14,7 +14,7 @@ return array(
                 ),
                 'humus_amqp_demo_module-rpc-client' => array(
                     'options' => array(
-                        'route' => 'amqpdemo rpc-client <amount>',
+                        'route' => 'amqpdemo rpc-client <amount> [--parallel]',
                         'defaults' => array(
                             'controller' => 'HumusAmqpDemoModule\\Controller\\RpcClient',
                         )
@@ -100,6 +100,10 @@ return array(
             'demo-rpc-server' => array(
                 'connection' => 'default',
                 'callback' => 'HumusAmqpDemoModule\Demo\PowerOfTwoCallback'
+            ),
+            'demo-rpc-server2' => array(
+                'connection' => 'default',
+                'callback' => 'HumusAmqpDemoModule\Demo\RandomIntCallback'
             )
         ),
         'rpc_clients' => array(
@@ -116,7 +120,8 @@ return array(
     'service_manager' => array(
         'invokables' => array(
             'HumusAmqpDemoModule\Demo\EchoCallback' => 'HumusAmqpDemoModule\Demo\EchoCallback',
-            'HumusAmqpDemoModule\Demo\PowerOfTwoCallback' => 'HumusAmqpDemoModule\Demo\PowerOfTwoCallback'
+            'HumusAmqpDemoModule\Demo\PowerOfTwoCallback' => 'HumusAmqpDemoModule\Demo\PowerOfTwoCallback',
+            'HumusAmqpDemoModule\Demo\RandomIntCallback' => 'HumusAmqpDemoModule\Demo\RandomIntCallback'
         )
     )
 );
