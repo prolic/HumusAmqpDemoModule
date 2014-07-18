@@ -69,6 +69,12 @@ class Module implements
                     $controller->setProducer($sl->get('topic-producer'));
                     return $controller;
                 },
+                __NAMESPACE__ . '\\Controller\\RpcClient' => function ($sm) {
+                    $sl = $sm->getServiceLocator();
+                    $controller = new \HumusAmqpDemoModule\Controller\RpcClientController();
+                    $controller->setRpcClient($sl->get('demo-rpc-client'));
+                    return $controller;
+                }
             )
         );
     }

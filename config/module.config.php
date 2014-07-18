@@ -11,6 +11,14 @@ return array(
                             'controller' => 'HumusAmqpDemoModule\\Controller\\TopicProducer',
                         )
                     )
+                ),
+                'humus_amqp_demo_module-rpc-client' => array(
+                    'options' => array(
+                        'route' => 'amqpdemo rpc-client <amount>',
+                        'defaults' => array(
+                            'controller' => 'HumusAmqpDemoModule\\Controller\\RpcClient',
+                        )
+                    )
                 )
             )
         )
@@ -86,12 +94,29 @@ return array(
                     )
                 ),
                 'callback' => 'HumusAmqpDemoModule\Demo\EchoCallback'
+            ),
+        ),
+        'rpc_servers' => array(
+            'demo-rpc-server' => array(
+                'connection' => 'default',
+                'callback' => 'HumusAmqpDemoModule\Demo\PowerOfTwoCallback'
             )
+        ),
+        'rpc_clients' => array(
+            'demo-rpc-client' => array(
+                'connection' => 'default',
+                'expect_serialized_response' => true
+            )
+        )
+    ),
+    'controllers' => array(
+        'invokables' => array(
         )
     ),
     'service_manager' => array(
         'invokables' => array(
-            'HumusAmqpDemoModule\Demo\EchoCallback' => 'HumusAmqpDemoModule\Demo\EchoCallback'
+            'HumusAmqpDemoModule\Demo\EchoCallback' => 'HumusAmqpDemoModule\Demo\EchoCallback',
+            'HumusAmqpDemoModule\Demo\PowerOfTwoCallback' => 'HumusAmqpDemoModule\Demo\PowerOfTwoCallback'
         )
     )
 );
