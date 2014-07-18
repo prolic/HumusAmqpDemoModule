@@ -1,6 +1,20 @@
 <?php
 
 return array(
+    'console' => array(
+        'router' => array(
+            'routes' => array(
+                'humus_amqp_demo_module-topic' => array(
+                    'options' => array(
+                        'route' => 'amqpdemo topic-producer <amount>',
+                        'defaults' => array(
+                            'controller' => 'HumusAmqpDemoModule\\Controller\\TopicProducer',
+                        )
+                    )
+                )
+            )
+        )
+    ),
     'humus_amqp_module' => array(
         'connections' => array(
             'default' => array(
@@ -19,6 +33,13 @@ return array(
                 'exchange_options' => array(
                     'name' => 'demo-exchange',
                     'type' => 'direct'
+                )
+            ),
+            'topic-producer' => array(
+                'connection' => 'default',
+                'exchange_options' => array(
+                    'name' => 'topic-exchange',
+                    'type' => 'topic'
                 )
             )
         ),
@@ -50,6 +71,20 @@ return array(
                     'routingKeys' => array(),
                 ),
                 'auto_setup_fabric' => true,
+                'callback' => 'HumusAmqpDemoModule\Demo\EchoCallback'
+            ),
+            'topic-consumer-error' => array(
+                'connection' => 'default',
+                'exchange_options' => array(
+                    'name' => 'topic-exchange',
+                    'type' => 'topic'
+                ),
+                'queue_options' => array(
+                    'name' => 'info-queue',
+                    'routingKeys' => array(
+                        '*.0'
+                    )
+                ),
                 'callback' => 'HumusAmqpDemoModule\Demo\EchoCallback'
             )
         )

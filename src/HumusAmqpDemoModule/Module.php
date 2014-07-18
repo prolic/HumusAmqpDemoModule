@@ -20,10 +20,12 @@ namespace HumusAmqpDemoModule;
 
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
+use Zend\ModuleManager\Feature\ControllerProviderInterface;
 
 class Module implements
     AutoloaderProviderInterface,
-    ConfigProviderInterface
+    ConfigProviderInterface,
+    ControllerProviderInterface
 {
     /**
      * Get config
@@ -48,6 +50,26 @@ class Module implements
                     __NAMESPACE__ => __DIR__,
                 ),
             ),
+        );
+    }
+
+    /**
+     * Expected to return \Zend\ServiceManager\Config object or array to seed
+     * such an object.
+     *
+     * @return array|\Zend\ServiceManager\Config
+     */
+    public function getControllerConfig()
+    {
+        return array(
+            'factories' => array(
+                __NAMESPACE__ . '\\Controller\\TopicProducer' => function ($sm) {
+                    $sl = $sm->getServiceLocator();
+                    $controller = new \HumusAmqpDemoModule\Controller\TopicProducerController();
+                    $controller->setProducer($sl->get('topic-producer'));
+                    return $controller;
+                },
+            )
         );
     }
 }

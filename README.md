@@ -40,3 +40,11 @@ Send a message from StdIn to exchange
 Send a message from parameter to exchange
 
     php public/index.php amqp stdin-producer demo-producer "my test message"
+
+Send 1000000 messages to topic exchange with random error-level as routing key
+
+    php public/index.php amqp consumer topic-consumer-error 1000000
+
+Consume 100 messages from topic exchange by routing key error (0)
+
+    php public/index.php amqpdemo topic-producer 100
