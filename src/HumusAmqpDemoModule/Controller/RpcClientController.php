@@ -33,7 +33,9 @@ class RpcClientController extends AbstractConsoleController
 
         for ($i = 0; $i < $amount; $i++) {
             $this->rpcClient->addRequest(serialize($i), 'demo-rpc-server', 'd1request_' . $i);
-            $this->rpcClient->addRequest(serialize($i), 'demo-rpc-server2', 'd2request_' . $i);
+            if ($request->getParam('parallel')) {
+                $this->rpcClient->addRequest(serialize($i), 'demo-rpc-server2', 'd2request_' . $i);
+            }
         }
         $replies = $this->rpcClient->getReplies();
         foreach ($replies as $key => $reply) {
