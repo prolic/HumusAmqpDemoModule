@@ -18,12 +18,8 @@
 
 namespace HumusAmqpDemoModule;
 
-use HumusAmqpModule\Amqp\QueueOptions;
-use Zend\Console\Adapter\AdapterInterface as ConsoleAdapter;
-use Zend\EventManager\EventInterface as Event;
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
-use Zend\ServiceManager\ServiceManager;
 
 class Module implements
     AutoloaderProviderInterface,
