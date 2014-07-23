@@ -90,7 +90,7 @@ return array(
                 'queue_options' => array(
                     'name' => 'info-queue',
                     'routingKeys' => array(
-                        '*.0'
+                        '*.err'
                     )
                 ),
                 'callback' => 'HumusAmqpDemoModule\Demo\EchoCallback'
@@ -151,5 +151,5 @@ return array(
             'HumusAmqpDemoModule\Demo\PowerOfTwoCallback' => 'HumusAmqpDemoModule\Demo\PowerOfTwoCallback',
             'HumusAmqpDemoModule\Demo\RandomIntCallback' => 'HumusAmqpDemoModule\Demo\RandomIntCallback'
         )
-    )
+    ),
 );
