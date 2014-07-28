@@ -61,3 +61,10 @@ Send messages to multiple consumer
     php public/index.php amqp stdin-producer topic-producer --route=level.test2 test2
     php public/index.php amqp stdin-producer topic-producer --route=level.info info
     php public/index.php amqp stdin-producer topic-producer --route=level.debug debug
+
+In Consumers
+
+    return self::MSG_REJECT -> to reject the message
+    return self::MSG_REJECT_REQUEUE -> to reject and requeue the message
+    return self::MSG_SINGLE_NACK_REQUEUE -> nack and requeue the message
+    return self::MSG_ACK -> (or return nothing) to ack the message
