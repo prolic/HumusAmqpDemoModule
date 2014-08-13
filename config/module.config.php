@@ -6,7 +6,7 @@ return array(
             'routes' => array(
                 'humus_amqp_demo_module-topic' => array(
                     'options' => array(
-                        'route' => 'amqpdemo topic-producer <amount>',
+                        'route' => 'humus amqpdemo topic-producer <amount>',
                         'defaults' => array(
                             'controller' => 'HumusAmqpDemoModule\\Controller\\TopicProducer',
                         )
@@ -14,7 +14,7 @@ return array(
                 ),
                 'humus_amqp_demo_module-rpc-client' => array(
                     'options' => array(
-                        'route' => 'amqpdemo rpc-client <amount> [--parallel]',
+                        'route' => 'humus amqpdemo rpc-client <amount> [--parallel]',
                         'defaults' => array(
                             'controller' => 'HumusAmqpDemoModule\\Controller\\RpcClient',
                         )

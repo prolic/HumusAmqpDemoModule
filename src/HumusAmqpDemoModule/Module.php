@@ -69,7 +69,7 @@ class Module implements
                 __NAMESPACE__ . '\\Controller\\TopicProducer' => function ($sm) {
                     $sl = $sm->getServiceLocator();
                     $controller = new \HumusAmqpDemoModule\Controller\TopicProducerController();
-                    $controller->setProducer($sl->get('topic-producer'));
+                    $controller->setProducer($sl->get('HumusAmqpModule\PluginManager\Producer')->get('topic-producer'));
                     return $controller;
                 },
                 __NAMESPACE__ . '\\Controller\\RpcClient' => function ($sm) {
@@ -108,7 +108,7 @@ class Module implements
         return array(
 
             // Describe available commands
-            'amqpdemo command'    => '',
+            'humus amqpdemo [command]'    => '',
 
             'Available commands:',
 
