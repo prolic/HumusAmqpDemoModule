@@ -108,19 +108,11 @@ class Module implements
         return array(
 
             // Describe available commands
-            'humus amqpdemo [command]'    => '',
+            'humus amqpdemo topic-producer <amount>' =>
+                'Produces test-messages for amount of messages on topic-producer',
 
-            'Available commands:',
-
-            // Describe expected parameters
-            array(
-                'amqpdemo topic-producer <amount>',
-                'Produces test-messages for amount of messages on topic-producer'
-            ),
-            array(
-                'amqpdemo rpc-client <amount> [--parallel]',
+            'humus amqpdemo rpc-client <amount> [--parallel]' =>
                 'Starts a rpc-client for amount of messages, --parellel means they will be processed with two callbacks'
-            ),
         );
     }
 }

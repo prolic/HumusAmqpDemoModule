@@ -138,7 +138,7 @@ return array(
                 'connection' => 'default',
                 'expect_serialized_response' => true
             )
-        )
+        ),
     ),
     'controllers' => array(
         'invokables' => array(
@@ -152,4 +152,11 @@ return array(
             'HumusAmqpDemoModule\Demo\RandomIntCallback' => 'HumusAmqpDemoModule\Demo\RandomIntCallback'
         )
     ),
+    'humus_supervisor_module' => array(
+        'listener_plugin_manager' => array(
+            'factories' => array(
+                'memmon' => 'HumusAmqpDemoModule\Service\MemmonListenerFactory'
+            )
+        ),
+    )
 );
