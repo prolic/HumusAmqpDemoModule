@@ -2,18 +2,18 @@
 
 namespace HumusAmqpDemoModule\Demo;
 
-use PhpAmqpLib\Message\AMQPMessage;
+use AMQPEnvelope;
 
 class PowerOfTwoCallback
 {
     /**
-     * @param AMQPMessage $msg The message
+     * @param AMQPEnvelope $msg The message
      * @return mixed false to reject and requeue, any other value to aknowledge
      */
-    public function __invoke(AMQPMessage $msg)
+    public function __invoke(AMQPEnvelope $msg)
     {
-        sleep(2);
-        $int = unserialize($msg->body);
+        sleep(1);
+        $int = unserialize($msg->getBody());
         return pow($int, 2);
     }
 }

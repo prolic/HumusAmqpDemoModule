@@ -2,17 +2,17 @@
 
 namespace HumusAmqpDemoModule\Demo;
 
-use PhpAmqpLib\Message\AMQPMessage;
+use AMQPEnvelope;
 
 class RandomIntCallback
 {
     /**
-     * @param AMQPMessage $msg The message
+     * @param AMQPEnvelope $msg The message
      * @return mixed false to reject and requeue, any other value to aknowledge
      */
-    public function __invoke(AMQPMessage $msg)
+    public function __invoke(AMQPEnvelope $msg)
     {
-        sleep(3);
+        sleep(2);
         return rand(0, 100);
     }
 }

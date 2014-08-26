@@ -2,7 +2,7 @@
 
 namespace HumusAmqpDemoModule\Controller;
 
-use HumusAmqpModule\Amqp\RpcClient;
+use HumusAmqpModule\RpcClient;
 use Zend\Console\ColorInterface;
 use Zend\Mvc\Controller\AbstractConsoleController;
 use Zend\Stdlib\RequestInterface;

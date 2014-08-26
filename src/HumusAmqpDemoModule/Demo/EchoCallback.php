@@ -2,16 +2,16 @@
 
 namespace HumusAmqpDemoModule\Demo;
 
-use PhpAmqpLib\Message\AMQPMessage;
+use AMQPEnvelope;
 
 class EchoCallback
 {
     /**
-     * @param AMQPMessage $msg The message
+     * @param AMQPEnvelope $msg The message
      * @return mixed false to reject and requeue, any other value to aknowledge
      */
-    public function __invoke(AMQPMessage $msg)
+    public function __invoke(AMQPEnvelope $msg)
     {
-        echo $msg->body . "\n";
+        echo $msg->getBody() . "\n";
     }
 }
