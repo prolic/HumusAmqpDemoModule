@@ -73,6 +73,13 @@ return array(
             'demo-rpc-server2' => array(
                 'name' => 'demo-rpc-server2',
                 'exchange' => 'demo-rpc-server2'
+            ),
+            'info-queue' => array(
+                'name' => 'info-queue',
+                'exchange' => 'topic-exchange',
+                'routingKeys' => array(
+                    '#.err'
+                )
             )
         ),
         'connections' => array(
@@ -86,20 +93,9 @@ return array(
                 'read_timeout' => 1, //sec, float allowed
                 'write_timeout' => 1, //sec, float allowed
             ),
-            'myconnection' => array(
-                'host' => 'localhost',
-                'port' => 5672,
-                'user' => 'guest',
-                'password' => 'guest',
-                'vhost' => '/',
-                'persistent' => true,
-                'read_timeout' => 3, //sec, float allowed
-                'write_timeout' => 1, //sec, float allowed
-            )
         ),
         'producers' => array(
             'demo-producer' => array(
-                'connection' => 'default',
                 'exchange' => 'demo',
                 'qos' => array(
                     'prefetch_size' => 0,
@@ -108,7 +104,6 @@ return array(
                 'auto_setup_fabric' => true
             ),
             'topic-producer' => array(
-                'connection' => 'default',
                 'exchange' => 'topic-exchange',
                 'auto_setup_fabric' => false
             )
@@ -123,29 +118,19 @@ return array(
                 'timeout' => 10 //
             ),
             'topic-consumer-error' => array(
-                'connection' => 'default',
-                'exchange_options' => array(
-                    'name' => 'topic-exchange',
-                    'type' => 'topic'
-                ),
-                'queue_options' => array(
-                    'name' => 'info-queue',
-                    'routingKeys' => array(
-                        '*.err'
-                    )
+                'queues' => array(
+                    'info-queue',
                 ),
                 'callback' => 'HumusAmqpDemoModule\Demo\EchoCallback'
             ),
         ),
         'rpc_servers' => array(
             'demo-rpc-server' => array(
-                'connection' => 'default',
                 'callback' => 'HumusAmqpDemoModule\Demo\PowerOfTwoCallback',
                 'queue' => 'demo-rpc-server',
                 'auto_setup_fabric' => true
             ),
             'demo-rpc-server2' => array(
-                'connection' => 'default',
                 'callback' => 'HumusAmqpDemoModule\Demo\RandomIntCallback',
                 'queue' => 'demo-rpc-server2',
                 'auto_setup_fabric' => true
@@ -153,7 +138,6 @@ return array(
         ),
         'rpc_clients' => array(
             'demo-rpc-client' => array(
-                'connection' => 'default',
                 'queue' => 'demo-rpc-client',
                 'auto_setup_fabric' => true
             )
