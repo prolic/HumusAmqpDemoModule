@@ -86,7 +86,7 @@ return array(
             'default' => array(
                 'host' => 'localhost',
                 'port' => 5672,
-                'user' => 'guest',
+                'login' => 'guest',
                 'password' => 'guest',
                 'vhost' => '/',
                 'persistent' => true,
@@ -149,14 +149,6 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-        )
-    ),
-    'service_manager' => array(
-        'invokables' => array(
-            'HumusAmqpDemoModule\Demo\EchoCallback' => 'HumusAmqpDemoModule\Demo\EchoCallback',
-            'HumusAmqpDemoModule\Demo\EchoErrorCallback' => 'HumusAmqpDemoModule\Demo\EchoErrorCallback',
-            'HumusAmqpDemoModule\Demo\PowerOfTwoCallback' => 'HumusAmqpDemoModule\Demo\PowerOfTwoCallback',
-            'HumusAmqpDemoModule\Demo\RandomIntCallback' => 'HumusAmqpDemoModule\Demo\RandomIntCallback'
         )
     ),
     'humus_supervisor_module' => array(
