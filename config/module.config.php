@@ -85,7 +85,6 @@ return array(
                 'persistent' => true,
                 'read_timeout' => 1, //sec, float allowed
                 'write_timeout' => 1, //sec, float allowed
-                'connect_timeout' => 1 //sec, float allowed
             ),
             'myconnection' => array(
                 'host' => 'localhost',
@@ -96,7 +95,6 @@ return array(
                 'persistent' => true,
                 'read_timeout' => 3, //sec, float allowed
                 'write_timeout' => 1, //sec, float allowed
-                'connect_timeout' => 1 //sec, float allowed
             )
         ),
         'producers' => array(
