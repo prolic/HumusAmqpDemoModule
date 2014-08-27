@@ -122,6 +122,9 @@ return array(
                     'info-queue',
                 ),
                 'callback' => 'HumusAmqpDemoModule\Demo\EchoCallback',
+                'qos' => array(
+                    'prefetch_count' => 100
+                ),
                 'auto_setup_fabric' => true
             ),
         ),

@@ -2,7 +2,7 @@
 
 namespace HumusAmqpDemoModule\Controller;
 
-use HumusAmqpModule\Amqp\Producer;
+use HumusAmqpModule\ProducerInterface;
 use Zend\Mvc\Controller\AbstractConsoleController;
 use Zend\Stdlib\RequestInterface;
 use Zend\Stdlib\ResponseInterface;
@@ -10,7 +10,7 @@ use Zend\Stdlib\ResponseInterface;
 class TopicProducerController extends AbstractConsoleController
 {
     /**
-     * @var Producer
+     * @var ProducerInterface
      */
     protected $producer;
 
@@ -24,12 +24,11 @@ class TopicProducerController extends AbstractConsoleController
         $amount = (int) $request->getParam('amount');
 
         for ($i = 0; $i < $amount; $i++) {
-            //$this->producer->reconnect();
             $this->producer->publish('test message', 'level.err');
         }
     }
 
-    public function setProducer(Producer $producer)
+    public function setProducer(ProducerInterface $producer)
     {
         $this->producer = $producer;
     }

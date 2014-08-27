@@ -54,9 +54,7 @@ Start the multiple consumer
 
 Send messages to multiple consumer
 
-    php public/index.php humus amqp stdin-producer topic-producer --route=level.error error
+    php public/index.php humus amqp stdin-producer topic-producer --route=level.err err
     php public/index.php humus amqp stdin-producer topic-producer --route=level.warn warn
-    php public/index.php humus amqp stdin-producer topic-producer --route=level.test test
-    php public/index.php humus amqp stdin-producer topic-producer --route=level.test2 test2
     php public/index.php humus amqp stdin-producer topic-producer --route=level.info info
     php public/index.php humus amqp stdin-producer topic-producer --route=level.debug debug
