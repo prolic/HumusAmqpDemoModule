@@ -11,9 +11,8 @@ Install this module to enable some demo consumers and producers as a start to le
 Dependencies
 ------------
 
- - PHP 5.3.23
+ - PHP 5.4.0
  - [HumusAmqpModule](https://github.com/prolic/HumusAmqpModule)
- - [php-amqplib](https://github.com/videlalvaro/php-amqplib)
 
 Installation
 ------------
@@ -27,44 +26,37 @@ Usage
 
 Setup Fabric
 
-    php public/index.php amqp setup-fabric
+    php public/index.php humus amqp setup-fabric
 
 Start the demo consumer
 
-    php public/index.php amqp consumer demo-consumer
+    php public/index.php humus amqp consumer demo-consumer
 
 Send a message from StdIn to exchange
 
-    echo "my test message" | xargs -0 php public/index.php amqp stdin-producer demo-producer
+    echo "my test message" | xargs -0 php public/index.php humus amqp stdin-producer demo-producer
 
 Send a message from parameter to exchange
 
-    php public/index.php amqp stdin-producer demo-producer "my test message"
+    php public/index.php humus amqp stdin-producer demo-producer "my test message"
 
 Send 1000000 messages to topic exchange with random error-level as routing key
 
-    php public/index.php amqp consumer topic-consumer-error 1000000
+    php public/index.php humus amqp consumer topic-consumer-error 1000000
 
 Consume 100 messages from topic exchange by routing key error (0)
 
-    php public/index.php amqpdemo topic-producer 100
+    php public/index.php humus amqpdemo topic-producer 100
 
 Start the multiple consumer
 
-    php public/index.php amqp multiple-consumer multiple-consumer
+    php public/index.php humus amqp multiple-consumer multiple-consumer
 
 Send messages to multiple consumer
 
-    php public/index.php amqp stdin-producer topic-producer --route=level.error error
-    php public/index.php amqp stdin-producer topic-producer --route=level.warn warn
-    php public/index.php amqp stdin-producer topic-producer --route=level.test test
-    php public/index.php amqp stdin-producer topic-producer --route=level.test2 test2
-    php public/index.php amqp stdin-producer topic-producer --route=level.info info
-    php public/index.php amqp stdin-producer topic-producer --route=level.debug debug
-
-In Consumers
-
-    return self::MSG_REJECT -> to reject the message
-    return self::MSG_REJECT_REQUEUE -> to reject and requeue the message
-    return self::MSG_SINGLE_NACK_REQUEUE -> nack and requeue the message
-    return self::MSG_ACK -> (or return nothing) to ack the message
+    php public/index.php humus amqp stdin-producer topic-producer --route=level.error error
+    php public/index.php humus amqp stdin-producer topic-producer --route=level.warn warn
+    php public/index.php humus amqp stdin-producer topic-producer --route=level.test test
+    php public/index.php humus amqp stdin-producer topic-producer --route=level.test2 test2
+    php public/index.php humus amqp stdin-producer topic-producer --route=level.info info
+    php public/index.php humus amqp stdin-producer topic-producer --route=level.debug debug
