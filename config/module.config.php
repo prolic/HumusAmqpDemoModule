@@ -105,7 +105,7 @@ return array(
             ),
             'topic-producer' => array(
                 'exchange' => 'topic-exchange',
-                'auto_setup_fabric' => false
+                'auto_setup_fabric' => true
             )
         ),
         'consumers' => array(
@@ -121,7 +121,8 @@ return array(
                 'queues' => array(
                     'info-queue',
                 ),
-                'callback' => 'HumusAmqpDemoModule\Demo\EchoCallback'
+                'callback' => 'HumusAmqpDemoModule\Demo\EchoCallback',
+                'auto_setup_fabric' => true
             ),
         ),
         'rpc_servers' => array(
