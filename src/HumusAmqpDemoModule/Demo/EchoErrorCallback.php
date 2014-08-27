@@ -2,18 +2,20 @@
 
 namespace HumusAmqpDemoModule\Demo;
 
-use HumusAmqpModule\Amqp\ConsumerInterface;
-use PhpAmqpLib\Message\AMQPMessage;
+use AMQPEnvelope;
+use AMQPQueue;
+use HumusAmqpModule\ConsumerInterface;
 
 class EchoErrorCallback
 {
     /**
      * @param AMQPMessage $msg The message
+     * @param AMQPQueue $queue
      * @return mixed false to reject and requeue, any other value to aknowledge
      */
-    public function __invoke(AMQPMessage $msg)
+    public function __invoke(AMQPMessage $msg, AMQPQueue $queue)
     {
-        echo 'ERROR: ' . $msg->body . "\n";
+        echo 'ERROR: ' . $msg->getBody() . "\n";
         return ConsumerInterface::MSG_ACK;
     }
 }
