@@ -1,8 +1,8 @@
 {
     "name": "prolic/humus-amqp-demo-module",
     "type": "demo",
-    "description": "AMQP Demo Module for Zend Framework 2 based on php-amqplib",
-    "keywords": ["zf2", "rabbit", "rabbitmq", "queue", "amqp", "php-amqplib", "humus", "demo"],
+    "description": "AMQP Demo Module for Zend Framework 2 based on ext-amqp",
+    "keywords": ["zf2", "zend", "rabbitmq", "queue", "amqp", "humus", "demo"],
     "homepage": "https://github.com/prolic/HumusAmqpDemoModule",
     "license": "MIT",
     "authors": [
