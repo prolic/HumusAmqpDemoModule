@@ -14,5 +14,6 @@ class EchoCallback
     public function __invoke(AMQPEnvelope $msg, AMQPQueue $queue)
     {
         echo $msg->getBody() . "\n";
+        throw new \Exception('foobar');
     }
 }

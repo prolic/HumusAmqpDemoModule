@@ -115,8 +115,9 @@ return array(
                 ),
                 'auto_setup_fabric' => true,
                 'callback' => 'echo',
-                'timeout' => 10,
-                'logger' => 'consumer-logger'
+                'idle_timeout' => 10,
+                'logger' => 'consumer-logger',
+                //'error_callback' => 'errorcallback'
             ),
             'topic-consumer-error' => array(
                 'queues' => array(
@@ -154,7 +155,8 @@ return array(
                     'echo' => 'HumusAmqpDemoModule\Demo\EchoCallback',
                     'error' => 'HumusAmqpDemoModule\Demo\EchoErrorCallback',
                     'poweroftwo' => 'HumusAmqpDemoModule\Demo\PowerOfTwoCallback',
-                    'randomint' => 'HumusAmqpDemoModule\Demo\RandomIntCallback'
+                    'randomint' => 'HumusAmqpDemoModule\Demo\RandomIntCallback',
+                    'errorcallback' => 'HumusAmqpDemoModule\Demo\ErrorCallback'
                 )
             )
         )
@@ -164,9 +166,6 @@ return array(
         )
     ),
     'service_manager' => array(
-        'factories' => array(
-            'logger' => 'Zend\Log\LoggerServiceFactory',
-        ),
         'abstract_factories' => array(
             'Zend\Log\LoggerAbstractServiceFactory'
         )
