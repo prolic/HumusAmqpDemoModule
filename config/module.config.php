@@ -114,28 +114,30 @@ return array(
                     'foo'
                 ),
                 'auto_setup_fabric' => true,
-                'callback' => 'HumusAmqpDemoModule\Demo\EchoCallback',
-                'timeout' => 10 //
+                'callback' => 'echo',
+                'timeout' => 10,
+                'logger' => 'consumer-logger'
             ),
             'topic-consumer-error' => array(
                 'queues' => array(
                     'info-queue',
                 ),
-                'callback' => 'HumusAmqpDemoModule\Demo\EchoCallback',
                 'qos' => array(
                     'prefetch_count' => 100
                 ),
-                'auto_setup_fabric' => true
+                'auto_setup_fabric' => true,
+                'callback' => 'echo',
+                'logger' => 'consumer-logger'
             ),
         ),
         'rpc_servers' => array(
             'demo-rpc-server' => array(
-                'callback' => 'HumusAmqpDemoModule\Demo\PowerOfTwoCallback',
+                'callback' => 'poweroftwo',
                 'queue' => 'demo-rpc-server',
                 'auto_setup_fabric' => true
             ),
             'demo-rpc-server2' => array(
-                'callback' => 'HumusAmqpDemoModule\Demo\RandomIntCallback',
+                'callback' => 'randomint',
                 'queue' => 'demo-rpc-server2',
                 'auto_setup_fabric' => true
             )
@@ -146,9 +148,40 @@ return array(
                 'auto_setup_fabric' => true
             )
         ),
+        'plugin_managers' => array(
+            'callback' => array(
+                'invokables' => array(
+                    'echo' => 'HumusAmqpDemoModule\Demo\EchoCallback',
+                    'error' => 'HumusAmqpDemoModule\Demo\EchoErrorCallback',
+                    'poweroftwo' => 'HumusAmqpDemoModule\Demo\PowerOfTwoCallback',
+                    'randomint' => 'HumusAmqpDemoModule\Demo\RandomIntCallback'
+                )
+            )
+        )
     ),
     'controllers' => array(
         'invokables' => array(
+        )
+    ),
+    'service_manager' => array(
+        'factories' => array(
+            'logger' => 'Zend\Log\LoggerServiceFactory',
+        ),
+        'abstract_factories' => array(
+            'Zend\Log\LoggerAbstractServiceFactory'
+        )
+    ),
+    'log' => array(
+        'consumer-logger' => array(
+            'writers' => array(
+                array(
+                    'name' => 'stream',
+                    'priority' => 1000,
+                    'options' => array(
+                        'stream' => '/tmp/consumers.log'
+                    )
+                )
+            )
         )
     ),
     'humus_supervisor_module' => array(
