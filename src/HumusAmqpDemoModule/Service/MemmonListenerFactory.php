@@ -39,10 +39,10 @@ class MemmonListenerFactory implements FactoryInterface
         $listener = new MemmonListener(
             $supervisor,
             array(),
-            array('tirendo-product-importer' => 10000000),
+            array('demo-consumer' => 10000000),
             0,
             10,
-            'tirendo-product-importer-memmon'
+            'demo-consumer-memmon'
         );
 
         return $listener;
