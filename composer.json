@@ -13,7 +13,7 @@
     ],
     "require": {
         "php": ">=5.3.23",
-        "prolic/humus-amqp-module": "dev-master",
+        "prolic/humus-amqp-module": "0.1.1",
         "prolic/humus-supervisor-module": "dev-master"
     },
     "autoload": {
