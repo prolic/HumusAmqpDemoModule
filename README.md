@@ -3,7 +3,7 @@ Humus AMQP Demo Module
 
 This is a demo module for [Humus AMQP Module](https://github.com/prolic/HumusAmqpModule).
 
-# ABANDONNED!!!
+# ABANDONED!!!
 ## This module is no longer supported!
 
 About
